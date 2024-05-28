@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:32:28 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/05/27 18:58:42 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/05/28 09:23:47 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ void ScalarConverter::convertToChar(double value){
 		|| value < std::numeric_limits<char>::min()
 		|| value > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
-	else {
+	else
+	{
 		if (isprint(static_cast<char>(value)))
-			std::cout << "char: '" << static_cast<char>(value) << std::endl;
+			std::cout << "char: '" << static_cast<char>(value) << "'" << std::endl;
 		else
 			std::cout << "char: Non displayable" << std::endl;
 	}
@@ -45,14 +46,26 @@ void ScalarConverter::convertToInt(double value){
 }
 
 void ScalarConverter::convertToFloat(double value){
-	(void)value;
+	if(std::isnan(value))
+		std::cout << "float: nanf" << std::endl;
+	else if (std::isinf(value)
+			|| value > std::numeric_limits<float>::max()
+			|| value < -std::numeric_limits<float>::max())
+		std::cout << "float: " << (value > 0 ? "+inff" : "-inff") << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(1) << "float: " << static_cast<float>(value) << "f" << std::endl;
 }
 
 void ScalarConverter::convertToDouble(double value){
-	(void)value;
+	if(std::isnan(value))
+		std::cout << "double: nan" << std::endl;
+	else if (std::isinf(value))
+		std::cout << "double: " << (value > 0 ? "+inf" : "-inf") << std::endl;
+	else
+		std::cout << std::fixed << std::setprecision(1) << "double: " << value << std::endl;
 }
 
-void convert(const std::string &literal){
+void ScalarConverter::convert(const std::string &literal){
 	
 	char *endptr;
 	double value = strtod(literal.c_str(), &endptr);

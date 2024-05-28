@@ -6,7 +6,7 @@
 /*   By: melanieyanez <melanieyanez@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 17:32:30 by melanieyane       #+#    #+#             */
-/*   Updated: 2024/05/27 18:58:37 by melanieyane      ###   ########.fr       */
+/*   Updated: 2024/05/28 08:20:23 by melanieyane      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string>
 #include <iostream>
+#include <iomanip>
 #include <cmath>
 #include <limits>
 
